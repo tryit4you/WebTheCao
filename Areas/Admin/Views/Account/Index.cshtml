@@ -1,0 +1,109 @@
+﻿@{
+    ViewBag.Title = "Quản trị tài khoản";
+}
+
+@addTagHelper *,Microsoft.AspNetCore.Mvc.TagHelpers
+
+<div class="alert alert-info align-center">
+    Quản lý tài khoản 
+</div>
+<div class="clearfix">
+    <div class="card ">
+        <div class="cart-in">
+            <ul class="nav nav-tabs tab-col-teal" role="tablist">
+                <li role="presentation" class="active">
+                    <a href="#home" data-toggle="tab">
+                        <i class="fa fa-table col-blue"></i> Tài khoản
+                    </a>
+                </li>
+                <li role="presentation">
+                    <a href="#create" data-toggle="tab">
+                        <i class="fa fa-plus-circle col-green"></i> Tạo tài khoản
+                    </a>
+                </li> <li role="presentation">
+                    <a href="#Edit" data-toggle="tab">
+                        <i class="fa fa-pencil col-green"></i> Sửa tài khoản
+                    </a>
+                </li>
+            </ul>
+            <div class="body">
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane fade in active" id="home">
+
+                            <div class="col-md-12">
+                                <div class="form-group form-inline pull-left">
+                                    <div class="form-line">
+                                        <input type="text" class="form-control" placeholder="Tìm kiếm..." name="Search" id="txtSearch">
+                                        <button class="btn bg-blue"><i class="fa fa-search"></i></button>
+                                    </div>
+
+                                </div>
+                             
+                            
+                        </div>
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Tên TK</th>
+                                    <th>Họ Tên</th>
+                                    <th>Điện Thoại</th>
+                                    <th>Email</th>
+                                    <th>Số Dư </th>
+                                    <th>###</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbData"></tbody>
+                        </table>
+                        <div class="paging-area">
+                            <div class="col-sm-5">
+                                <div class="dataTables_info" id="DataTables_Table_0_info" role="status" aria-live="polite">
+                                    <p>Trang <mark><span id="currentpage"></span></mark> tổng số <mark><span id="totalpage"></span></mark> trang</p>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-7">
+                                <div class="dataTables_paginate paging_simple_numbers" id="DataTables_Table_0_paginate">
+                                    <div class="pagination" id="pagination">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade in " id="create">
+                        @await Html.PartialAsync("_CreatePartial")
+
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade in " id="Edit">
+                        @await Html.PartialAsync("_EditPartial")
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+<script id="data-template" type="x-tmpl-mustache">
+    <tr class="row_item_{{Id}}" data-id="{{Id}}">
+
+        <td>{{UserName}}</td>
+        <td>{{DisplayName}}</td>
+        <td>{{PhoneNumber}}</td>
+        <td>{{{Email}}}</td>
+        <td>{{Point}}</td>  
+        <td class="account-btn">
+            <a class="col-blue waves-effect btnEdit" href="#" data-id="{{Id}}">
+                <i class="fa fa-pencil col-green"></i>
+            </a>
+            {{{Status}}}
+            <a class="col-blue waves-effect btnDelete" href="#" data-id="{{Id}}">
+                <i class="fa fa-trash col-red"></i>
+            </a>
+        </td>
+    </tr>
+</script>
+
+@section jsFooter{
+    <script src="~/Admin/dist/js/controller/userAccountScripts.js"></script>
+}

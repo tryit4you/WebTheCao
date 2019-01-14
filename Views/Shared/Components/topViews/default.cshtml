@@ -1,0 +1,12 @@
+﻿<strong class="light-blue-text">Bài viết được xem nhiều</strong>
+<hr />
+<ul class="collection" style="border: none;border-bottom: 1px solid #e0e0e0;">
+    @foreach (var post in Model)
+    {
+        var url = "/khuyen-mai/" + post.MetaName + "/" + post.Id;
+        <li class="collection-item avatar topview" style="min-height:58px">
+            <img src="@post.Avatar" alt="@post.Name" class="circle">
+            <a href="@url" title="@post.Name">@post.Name</a>
+        </li>
+    }
+</ul>

@@ -1,0 +1,82 @@
+﻿@model WebTheCao.Data.Models.Contact
+@{
+    ViewData["Title"] = "Liên hệ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="container">
+
+    <div class="row">
+
+       <div class="col-md-5 contact-area">
+            <h1 class="blue-grey-text header">Trực tiếp 24/7</h1>
+            <ul class="collection">
+
+                <li class="collection-item avatar blue lighten-5">
+                    <i class="material-icons circle  blue accent-1 white-text">phone</i>
+                    <span class="title" style="margin-top:12px">Viettel: @Model.PhoneNumber</span>
+                </li>
+                <li class="collection-item avatar  green accent-1">
+                    <i class="material-icons circle green accent-3 white-text">timeline</i>
+                    <span class="title" title="@Model.Facebook" style="margin-top:10px">Facebook: <a href="@Model.FacebookLink">@Model.Facebook</a> </span>
+                    <p title="@Model.Zalo">
+                      Zalo:  @Model.Zalo
+                    </p>
+                </li>
+               
+                <li class="collection-item avatar deep-orange lighten-5" >
+                    <i class="material-icons circle red">report_problem</i>
+                    <span class="title">Lưu ý: Không spam với bất kỳ hình thức nào</span>
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-1 vertical">
+            <div class="or-circle red">Hoặc</div>
+        </div>
+        <div class="col-md-6 contact-area">
+            <h1 class="blue-grey-text header">Gửi tin nhắn</h1>
+            <div class="row">
+                <form class="col s12" id="frm_feedback">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="txtName" name="fullName" type="text" class="validate">
+                            <label for="txtName">Họ tên</label>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="txtPhone" type="text" name="phone" class="validate phone-format">
+                            <label for="txtPhone">Số điện thoại</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="txtemail" name="email" type="email" class="validate">
+                            <label for="txtemail">Email</label>
+                        </div>
+                    </div> 
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="txtSubject" name="Subject" type="text" class="validate">
+                            <label for="txtSubject">Tiêu đề...</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <textarea id="txtContent" name="content" class="materialize-textarea"></textarea>
+                            <label for="txtContent">Nhập bất cứ thứ gì bạn muốn </label>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <button type="button" class="btn btn-block waves-effect blue btn-feeback">Gởi phản hồi</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>

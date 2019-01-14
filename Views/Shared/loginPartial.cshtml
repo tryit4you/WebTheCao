@@ -1,0 +1,113 @@
+﻿<!-- BEGIN # MODAL LOGIN -->
+<div class="modal fade" id="login-modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" align="center">
+                <img class="rounded-circle mx-auto" id="img_logo" src="~/images/login-icon.png">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i class="material-icons">close</i>
+                </button>
+            </div>
+
+            <!-- Begin # DIV Form -->
+            <div id="div-forms">
+
+                <!-- Begin # Login Form -->
+                <form id="login-form">
+                    <div class="modal-body">
+                        <div class="input-field">
+                            <input id="login_username" type="email" required>
+                            <label for="login_username">Tên tài khoản</label>
+                            <span class="error"  ></span>
+                        </div>
+                        <div class="input-field">
+                            <input id="login_password" type="password" required>
+                            <label for="login_password">Mật khẩu</label>
+                            <span class="error" ></span>
+                        </div>
+                        <label>
+                            <input type="checkbox" id="rememberMe" checked="checked" />
+                            <span>Nhớ mật khẩu</span>
+                        </label>
+
+                    </div>
+
+                    <div class="footer">
+                        <div class=" clearfix">
+                            <button id="btn-login" class="btn btn-primary btn-block waves-effect waves-light">Đăng nhập</button>
+                        </div>
+                        <div class="clearfix">
+                            <a id="login_lost_btn" href="#" class="direct-link">Quên mật khẩu?</a>
+                            <a id="login_register_btn" href="#" class="direct-link">Đăng ký</a>
+                        </div>
+                    </div>
+                </form>
+                <!-- End # Login Form -->
+                <!-- Begin | Lost Password Form -->
+                <form id="lost-form" style="display:none;">
+                    <div class="modal-body">
+                        <div id="div-lost-msg">
+                            <div id="icon-lost-msg" class="glyphicon glyphicon-chevron-right"></div>
+                            <span id="error-rs" class="cyan-text text-lighten-1"></span>
+                        </div>
+                        <div class="input-field">
+                            <input id="lost_email" name="lost_email" type="email" required>
+                            <label for="login_username">E-mail</label>
+                            <span class="helper-text" ></span>
+                        </div>
+                        <button type="button" id="forgot-password-btn" class="btn btn-primary btn-block waves-effect waves-light">Gửi thông tin</button>
+                    </div>
+                        <div class="clearfix">
+                            <a id="lost_login_btn" href="#" class="direct-link" >Đăng nhập</a>
+                            <a id="lost_register_btn" href="#" class="direct-link">Đăng ký</a>
+                        </div>
+                </form>
+                <!-- End | Lost Password Form -->
+                <!-- Begin | Register Form -->
+                <form id="register-form" class="form-group" role="form" style="display:none;">
+                    <div class="modal-body">
+                        <div id="div-register-msg">
+                            <div id="icon-register-msg" class="glyphicon glyphicon-chevron-right"></div>
+
+                            <h5 class="head">Đăng ký tài khoản</h5>
+                        </div>
+                       
+                        <div class="input-field">
+                            <input id="register_username" name="register_username" class="validate" type="text" required>
+                            <label for="register_username">Tên tài khoản</label>
+                            <span class="helper-text error"></span>
+                        </div>
+                        <div class="input-field">
+                            <input id="register_phone" name="phone_number" type="text" class="phone-format validate" required>
+                            <label for="register_phone">Số điện thoại</label>
+                            <span class="helper-text error"></span>
+                        </div>
+                        <div class="input-field">
+                            <input id="register_email" name="register_email" type="email" class="validate" required>
+                            <label for="register_email">E-Mail</label>
+                            <span class="helper-text error"></span>
+                        </div>
+                        <div class="input-field">
+                            <input id="register_password" name="register_password" class="validate" type="password" required>
+                            <label for="register_password">Mật khẩu</label>
+                            <span class="helper-text error"></span>
+                        </div>
+                    </div>
+                    <div class="footer">
+                        <div>
+                            <button class="btn btn-primary btn-block waves-effect waves-light" id="btn-register">Đăng ký</button>
+                        </div>
+                        <div>
+                            <span>Đã có tài khoản?</span>
+                            <a id="register_login_btn"href="#" class="direct-link">Đăng nhập</a>
+                        </div>
+                    </div>
+                </form>
+                <!-- End | Register Form -->
+
+            </div>
+            <!-- End # DIV Form -->
+
+        </div>
+    </div>
+</div>

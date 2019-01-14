@@ -1,0 +1,116 @@
+﻿@{
+    ViewBag.Title = "Quản trị thẻ cào";
+}
+
+
+@model IEnumerable<WebTheCao.ViewModels.TaiKhoanNganHangViewModel>
+@addTagHelper *,Microsoft.AspNetCore.Mvc.TagHelpers
+<div class="alert alert-info align-center">
+    Tài khoản ngân hàng
+</div>
+<div class="clearfix">
+    <div class="card ">
+        <div class="cart-in">
+
+
+            <ul class="nav nav-tabs tab-col-teal" role="tablist">
+                <li role="presentation" class="active">
+                    <a href="#home" data-toggle="tab">
+                        <i class="fa fa-table col-blue"></i> Tài khoản thẻ
+                    </a>
+                </li>
+                <li role="presentation">
+                    <a href="#create" data-toggle="tab">
+                        <i class="fa fa-plus-circle col-green"></i> Thêm mới
+                    </a>
+                </li>
+                <li role="presentation">
+                    <a href="#Edit" data-toggle="tab">
+                        <i class="fa fa-edit col-orange"></i> Chỉnh sửa
+                    </a>
+                </li>
+
+            </ul>
+            <div class="body">
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane fade in active" id="home">
+
+                        <div class="show-Colapse">
+                            <div class="panel-group" id="accordion">
+
+                                <div class="panel-group" id="accordion">
+                                    @foreach (var item in Model)
+                                    {
+                                        <div class="box box-widget collapsed-box ">
+                                            <div class="box-header with-border">
+                                                <div class="cardblock">
+                                                    <span class="username">
+                                                        <a href="#" data-widget="collapse">@item.TenNH</a>
+                                                        <a class="btnEdit" data-id="@item.Id"><i class="fa fa-pencil blue"></i></a>
+                                                        @{string result = (item.Status ? "<a class='btn-active bg-green' data-id='" + item.Id + "'><i class='fa fa-check bg-'> Active</i></a>" : "<a class='btn-active bg-red' data-id='" + item.Id + "'><i class='fa fa-ban'>Not Active</i></a>");}
+                                                        @Html.Raw(result)
+                                                        <a class="btnDelete bg-red" data-id="@item.Id"><i class="fa fa-trash blue"></i></a>
+                                                    </span>
+                                                </div>
+                                                <div class="box-tools">
+                                           
+                                                    <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                                        <i class="fa fa-plus"></i>
+                                                    </button>
+                                                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                                </div>
+                                            </div>
+                                            <!-- /.box-header -->
+                                            <div class="box-body" style="">
+
+                                                <table class="table">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th>UserName</th>
+                                                            <td>@item.UserName</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th style="width:50%">Số tài khoản:</th>
+                                                            <td>@item.SoTK</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Người thụ hưởng</th>
+                                                            <td>@item.TenNguoiThuHuong</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Tên chi nhánh</th>
+                                                            <td>@item.TenChiNhanh</td>
+                                                        </tr>
+
+                                                    </tbody>
+                                                </table>
+
+                                            </div>
+                                        </div>
+                                    }
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade in " id="create">
+                        @await Html.PartialAsync("_CreatePartial")
+
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade in " id="Edit">
+                        @await Html.PartialAsync("_EditPartial")
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+@await Html.PartialAsync("_cropImageModal")
+
+@section jsFooter{
+    <script src="~/Admin/dist/js/controller/tknhController.js"></script>
+
+}

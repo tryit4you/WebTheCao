@@ -1,0 +1,92 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>NopTheGiaRe | Admin</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.7 -->
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css">
+
+    @* material  *@
+
+    <!-- Font Awesome -->
+    <!-- Ionicons -->
+    <link href="~/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/lib/pace/pace.css" rel="stylesheet" />
+    <!-- Theme style -->
+    <link rel="stylesheet" href="~/Admin/dist/css/AdminLTE.min.css">
+    <link href="~/Admin/dist/css/customStyle.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/Admin/dist/css/skins/_all-skins.min.css">
+    <link href="~/lib/toastr/toastr.min.css" rel="stylesheet" />
+    <!-- Date Picker -->
+    <link rel="stylesheet" href="~/lib/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+    <!--croppie-->
+    <link href="~/lib/croppie/croppie.css" rel="stylesheet" />
+
+    <link href="~/lib/select2/select2.min.css" rel="stylesheet" />
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+
+    <div class="wrapper">
+        @await Html.PartialAsync("_topNavigation");
+        <!-- Left side column. contains the logo and sidebar -->
+        @await Html.PartialAsync("_navigation")
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header" style="background:#fff">
+                <ol class="breadcrumb pull-left">
+                    <li><a href="#"><i class="fa fa-home"></i> Trang chủ</a></li>
+                    <li class="active">@ViewBag.Title</li>
+                </ol>
+            </section>
+            <section class="content" id="contentPage">
+                <!-- Small boxes (Stat box) -->
+                @RenderBody()
+
+            </section>
+        </div>
+        <!-- /.content-wrapper -->
+        @await Html.PartialAsync("_footer")
+        <!-- Control Sidebar -->
+        @await Html.PartialAsync("_sidebar")
+        <div class="control-sidebar-bg"></div>
+        @await Html.PartialAsync("_UploadFileModal")
+    </div>
+    <!-- ./wrapper -->
+    <!-- jQuery 3 -->
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <!-- jQuery UI 1.11.4 -->
+    <script src="~/lib/jquery-ui/jquery-ui.min.js"></script>
+    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+    <script>
+        $.widget.bridge('uibutton', $.ui.button);
+    </script>
+    <!-- Bootstrap 3.3.7 -->
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+
+
+    <!-- datepicker -->
+    <script src="~/lib/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+    <!-- Slimscroll -->
+    <script src="~/lib/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+
+    <script src="~/lib/Chart.min.js"></script>
+    <script src="~/lib/libscript190818.min.js"></script>
+    <!--mustache-->
+    <script src="~/lib/autoNumeric.js"></script>
+    <script src="~/lib/mustache.min.js"></script>
+    <script src="~/lib/pagination.js"></script>
+    <script src="~/lib/tinymce/tinymce.min.js"></script>
+    <script src="~/lib/tinymce/tinyConfig.js"></script>
+    <script src="~/Admin/dist/js/controller/commonController.min.js"></script>
+    <script src="~/Admin/dist/js/controller/hungitUploadFile.js"></script>
+    <script src="/Admin/dist/js/adminlte.min.js"></script>
+    <script src="~/Admin/dist/js/controller/notifi.js"></script>
+    @RenderSection("jsFooter", required: false)
+</body>
+</html>

@@ -1,0 +1,54 @@
+﻿@addTagHelper *,Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewBag.Title = "Trả lời thư";
+}
+@using  WebTheCao.Areas.Admin.ViewModels
+@model SendMailViewModels
+<section class="content">
+    <div class="row">
+
+        @await Html.PartialAsync("mailNavigation")
+        <!-- /.col -->
+        <div class="col-md-9">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Gửi tin nhắn đến tài khoản đăng ký</h3>
+
+                </div>
+              
+            </div>
+            <!-- /.box-header -->
+            <form asp-action="compose" method="post">
+                <div asp-validation-summary="All"></div>
+                <div class="box-body">
+                    <div class="form-group">
+                        <input asp-for="Ids" name="ID" class="hidden" value="@Model.Ids" />
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" asp-for="Subject" placeholder="Subject:" id="txtSubject" value="Tin nhắn trả lời của BKEbook.vn @Model.Subject">
+                        <span asp-validation-for="Subject"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <textarea id="txtContent" class="form-control" asp-for="Content"></textarea>
+                        <span asp-validation-for="Content"></span>
+                    </div>
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer">
+                    <div class="pull-right">
+                        <button type="submit" class="btn btn-primary"><i class="fa fa-envelope-o"></i> Send</button>
+                    </div>
+                    <button type="reset" class="btn btn-default"><i class="fa fa-times"></i> Hủy</button>
+                </div>
+                <!-- /.box-footer -->
+            </form>
+
+        </div>
+        <!-- /. box -->
+    </div>
+    <!-- /.col -->
+    <!-- /.row -->
+    <!-- /.row -->
+</section>
+

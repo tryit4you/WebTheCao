@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>D:\netcore</_PublishTargetUrl>
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAUmhop2CdYUys9m5bWsZRMgAAAAACAAAAAAAQZgAAAAEAACAAAABRDHVfbnEQN+pu7EvfyspCFZgV/11zTG+mU8aIMUpbwAAAAAAOgAAAAAIAACAAAACnoi2qnEQ1oRmBkgld4GPcE0K+ChNleYct2N34CrdH4yAAAAAGjq/aWT6+yeIAJzY0Zkr6fnaBCLjYsztIMfxJVyCNFEAAAABEq6FVEHqkx2zkLPuCKC/6JCNm8pS1MQuca2LI2NsHBPmFpvJ8Kb6yRqpTghu1h75z4emCcoas0aIX1LPO1xsu</EncryptedPassword>
+  </PropertyGroup>
+</Project>

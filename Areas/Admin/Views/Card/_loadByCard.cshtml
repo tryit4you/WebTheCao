@@ -1,0 +1,29 @@
+﻿@model WebTheCao.Data.Models.MenhGia
+@using System.Globalization;
+@{
+
+    CultureInfo cul = CultureInfo.GetCultureInfo("vi-VN");
+}
+
+<tr class="row_item" data-id="@Model.Id">
+
+<td>
+    @Model.Price.ToString("#,###", cul.NumberFormat)
+</td>
+<td>
+    @Model.unit_Price.ToString("#,###", cul.NumberFormat)
+</td>
+<td>
+    @Model.Point.ToString("#,###")
+</td>
+
+<td>
+
+    <a class="badge bg-red btn-delete" href="#" data-id="@Model.Id">
+        <i class="fa fa-trash"></i>Xóa
+    </a>
+    <a href="# " class="badge bg-orange-active btn-edit" data-id="@Model.Id">
+        <i class="fa fa-edit"></i>Sửa
+    </a>
+</td>
+</tr>

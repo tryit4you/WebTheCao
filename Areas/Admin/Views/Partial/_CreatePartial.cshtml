@@ -1,0 +1,53 @@
+﻿<div class="header">
+    <h3 id="roomHeader">Tạo mới liên hệ</h3>
+</div>
+<div class="body">
+    <form role="form" id="frmAddNew">
+        <input type="hidden" id="txtId">
+        <div class="form-group">
+            <div class="form-line">
+                <label for="Name">Tên liên hệ (<span class="col-pink">*</span>)</label>
+                <input type="text" class="form-control" name="Name" id="txtName">
+                <span class="validate"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="form-line">
+                <label for="Phone">Điện thoại (<span class="col-pink">*</span>)</label>
+                <input type="text" class="form-control" name="Phone" id="txtPhone">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="form-line">
+                <label for="Email">Email (<span class="col-pink">*</span>)</label>
+                <input type="email" class="form-control" name="Email" id="txtEmail">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="form-line">
+                <label for="Address">Địa chỉ (<span class="col-pink">*</span>)</label>
+                <input type="text" class="form-control" name="Address" id="txtAddress">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="form-line">
+                <label for="Website">Website (<span class="col-pink">*</span>)</label>
+                <input type="text" class="form-control" name="Website" id="txtWebsite">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="demo-switch-title">Trạng thái</div>
+            <div class="switch">
+                <label><input type="checkbox" id="txtStatus" checked><span class="lever switch-col-lime"></span></label>
+            </div>
+        </div>
+    </form>
+    <br />
+    <span> Các trường được đánh dấu (<span class="col-pink">*</span>) được yêu cầu nhập</span>
+    <br />
+    <div class="form-group">
+
+        <button type="button" class="btn btn-secondary waves-effect" id="btnCancle" data-dismiss="modal">Hủy</button>
+        <button type="button" class="btn btn-primary waves-effect" id="btnAdd">Tạo mới</button>
+    </div>
+</div>

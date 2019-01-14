@@ -1,0 +1,41 @@
+﻿@model WebTheCao.ViewModels.LoginViewModels
+@addTagHelper *,Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = null;
+}
+<!doctype html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Đăng nhập | Nạp thẻ giá rẻ</title>
+    <link href="~/css/bootstrap.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/css/login.css">
+    <style>
+        .validation-summary-errors ul li {
+            list-style-type: circle;
+        }
+    </style>
+</head>
+<body>
+    @if (ViewBag.Message != null)
+    {
+        <h5>@ViewBag.Message</h5>
+    }
+    <div class="loginBox">
+
+        <img src="~/images/user.png" class="user">
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <form asp-route="/login" method="post">
+            <input type="hidden" class="form-control" asp-for="ReturnUrl">
+            <p>Tài khoản</p>
+            <input type="text" class="form-control" asp-for="UserName" placeholder="Email">
+
+            <p>Mật khẩu</p>
+            <input type="password" class="form-control" asp-for="Password" placeholder="Password">
+
+            <input type="submit" name="" value="Đăng nhập">
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,143 @@
+﻿@using Microsoft.Extensions.Options
+@using reCAPTCHA.AspNetCore
+@inject IOptions<RecaptchaSettings> RecaptchaSettings
+@{
+   
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-8 card-area">
+            <form id="frm-buy-card" class="form-group">
+
+                <h4 class="mb-4 light-blue-text">Mua mã thẻ điện thoại</h4>
+                <h4 class="c-header blue-grey-text text-darken-3">Chọn nhà mạng</h4>
+                <div class="list-card-items clearfix">
+                </div>
+                <h4 class="c-header  blue-grey-text text-darken-3">Số lượng thẻ</h4>
+                <div class="input-field">
+                    <select name="Warenty" id="selectWarenty" required>
+                        <option value="" disabled selected>Chọn số thẻ</option>
+                        <option value="1">1 cái</option>
+                        <option value="2">2 cái</option>
+                        <option value="3">3 cái</option>
+                        <option value="4">4 cái</option>
+                        <option value="5">5 cái</option>
+                        <option value="6">6 cái</option>
+                        <option value="7">7 cái</option>
+                        <option value="8">8 cái</option>
+                        <option value="9">9 cái</option>
+                        <option value="10">10 cái</option>
+                    </select>
+
+                </div>
+                <div class="price hidden">
+                    <h4 class="c-header  blue-grey-text text-darken-3">Mệnh giá thẻ cào</h4>
+                    <div class="list-price-items">
+                    </div>
+
+                </div>
+
+                <h4 class="c-header  blue-grey-text text-darken-3">Nhập số điện thoại</h4>
+                <div class="input-field ">
+
+                    <input type="text"  name="Phone" id="txtPhone" value="" />
+                    <label for="txtPhone">Nhập số điện thoại/ Internet viettel</label>
+                </div>
+                <h4 class="c-header  blue-grey-text text-darken-3">Email </h4>
+                <div class="input-field">
+
+                    <input type="email" name="Email" id="txtEmail" value="" />
+                    <label for="txtEmail">E-mail</label>
+                </div>
+                <h4 class="c-header blue-grey-text text-darken-3">Mức độ ưu tiên</h4>
+                <div class="input-field">
+                    <select name="Required" id="selectRequired" required>
+                        <option value='0' selected>Chậm </option>
+                        <option value='0.05'> Nhanh (5% tổng giá trị thẻ nạp)</option>
+
+                    </select>
+
+                </div>
+                <h4 class="c-header  blue-grey-text text-darken-3">Thêm ghi chú</h4>
+                <div class="input-field">
+
+                    <textarea id="txtDescription" name="Description" class="materialize-textarea"></textarea>
+                    <label for="txtDescription">Ghi chú...</label>
+                </div>
+
+            </form>
+
+
+        </div>
+        <div class="col-md-4">
+            <strong class="light-blue-text">Thông tin giao dịch</strong>
+            <hr />
+            <table>
+                <tr>
+                    <td>Nhà mạng</td>
+                    <td><span id="_nha_mang">______</span></td>
+                </tr>
+                <tr>
+                    <td>Số lượng thẻ</td>
+                    <td id="_so_luong_the">______</td>
+                </tr>
+                <tr>
+                    <td>Mệnh giá thẻ</td>
+                    <td id="_menh_gia">______</td>
+                </tr>
+                <tr>
+                    <td>Số điện thoại</td>
+                    <td id="_so_dien_thoai">_____</td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td id="_email"></td>
+                </tr>
+
+                <tr>
+                    <td>Tổng Giá trị thẻ</td>
+                    <td id="_totalPrice">_____</td>
+                </tr>
+                <tr>
+                    <td>Giá chiết khấu</td>
+                    <td id="_totalUnitPrice">_____</td>
+                </tr>
+                <tr>
+                    <td>Phí dịch vụ</td>
+                    <td id="_required">_____</td>
+                </tr> 
+                <tr>
+                    <td>Tổng thanh toán</td>
+                    <td id="_total">_____</td>
+                </tr>
+
+            </table>
+            <div class="row">
+                <div class="col-md-12 mt-4 mb-2 recapcha">
+                    @Html.Recaptcha(RecaptchaSettings?.Value)
+                </div>
+             
+                <div class="col-md-12">
+                        <button class="btn btn-block waves-effect blue" id="btn_buy">Xác nhận mua thẻ</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-info alert-dismissible fade show" role="alert">
+                <strong style="font-weight:700">Yêu cầu nhanh!</strong> Nạp thẻ trong vòng 15 phút.
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <br />
+                <strong style="font-weight:700">Yêu cầu nạp chậm!</strong> Nạp thẻ trong vòng 1h  đến 2h. Chậm nhất trong ngày đăng ký!
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

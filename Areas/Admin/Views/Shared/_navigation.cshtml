@@ -1,0 +1,149 @@
+﻿@addTagHelper  *,WebTheCao
+<aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+        <!-- Sidebar user panel -->
+        @if (User.Identity.IsAuthenticated)
+        {
+
+
+            <div class="user-panel">
+                <div class="pull-left image">
+                    <img username="@User.Identity.Name" src="" class="img-circle" alt="@User.Identity.Name"/>
+                </div>
+                <div class="pull-left info">
+                    <p>@User.Identity.Name</p>
+                    <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                </div>
+            </div>
+        }
+        <!-- search form -->
+        <form action="#" method="get" class="sidebar-form">
+            <div class="input-group">
+                <input type="text" name="q" class="form-control" placeholder="Search...">
+                <span class="input-group-btn">
+                    <button type="submit" name="search" id="search-btn" class="btn btn-flat">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </span>
+            </div>
+        </form>
+        <!-- /.search form -->
+        <!-- sidebar menu: : style can be found in sidebar.less -->
+        <ul class="sidebar-menu" data-widget="tree">
+            <li class="header">Quản trị </li>
+            <li>
+                <a href="/admin/Home/Index">
+                    <i class="fa fa-home"></i> <span>Trang chủ</span>
+                </a>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa  fa-expeditedssl"></i>
+                    <span>Tài khoản &amp; Bảo mật</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="/admin/account/index"><i class="fa fa-circle-o"></i> Tài khoản</a></li>
+                    <li><a href="/admin/role/index"><i class="fa fa-circle-o"></i> Phân quyền</a></li>
+                    <li><a href="/admin/taikhoanthe/index"><i class="fa fa-paypal "></i> Tài khoản ngân hàng</a></li>
+                </ul>
+            </li>
+
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-credit-card "></i> <span>Thẻ cào &amp; Nạp thẻ</span>
+                    <span class="pull-right-container">
+                        <span class="mail-info"><span mail-info="@true"></span> </span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu" style="">
+                    <li class="active">
+                        <a href="/admin/card/history">
+                            <i class="fa fa-history"></i> <span>Lịch sử nạp thẻ</span>
+
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/admin/card/index">
+                            <i class="fa fa-credit-card-alt"></i> <span>Thẻ cào &amp; Mệnh giá thẻ</span>
+
+                        </a>
+                    </li>
+                   
+                </ul>
+            </li>
+
+            <li>
+                <a href="/admin/giaodich/index">
+                    <i class="fa fa-handshake-o "></i> <span>Quản lý giao dịch</span>
+                    <span class="pull-right-container">
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="/admin/post/index">
+                    <i class="fa fa-book"></i> <span>Bài viết</span>
+                    <span class="pull-right-container">
+                    </span>
+                </a>
+            </li>
+            
+
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-envelope"></i> <span>Thư phản hồi</span>
+                    <span class="pull-right-container">
+                        <span class="mail-info"><span mail-info="@true"></span> </span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu" style="">
+                    <li class="active">
+                        <a href="/admin/feedback/mailbox?opt=compose">
+                            <i class="fa fa-commenting-o"></i> <span>Tất cả</span>
+
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/admin/feedback/mailbox?opt=news-message">
+                            <i class="fa fa-envelope-o"></i> <span>Tin nhắn mới</span>
+
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/admin/feedback/mailbox?opt=sends-message">
+                            <i class="fa fa-envelope"></i> <span>Tin nhắn đã gởi</span>
+
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/admin/feedback/mailbox?opt=waits-message">
+                            <i class="fa fa-spinner"></i> <span>Đang chờ</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-files-o"></i>
+                    <span>Quản lý trang</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="/admin/Page/Index"><i class="fa fa-circle-o"></i> Thông báo</a></li>
+                    <li><a href="/admin/Contact/Index"><i class="fa fa-circle-o"></i> Liên hệ</a></li>
+                    <li><a href="/admin/Slide/Index"><i class="fa fa-circle-o"></i> Slide</a></li>
+                </ul>
+            </li>
+
+        </ul>
+    </section>
+    <!-- /.sidebar -->
+</aside>

@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Nạp thẻ giá rẻ - Nạp thẻ cào với giá rẻ nhất,mức chiết khấu ưu rẻ nhất</title>
+    <meta name="cystack-verification" content="c90555bd0df2241ce180c751e5f74c38" />
+    <meta name="keywords" content="nạp thẻ, nạp thẻ giá rẻ, nộp thẻ viettel, thẻ cào viettel,thẻ cào vina, thẻ cào mobi" />
+    <meta property="og:locale" content="vi_VN" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="nạp thẻ giá rẻ, an toàn tiết kiệm" />
+    <meta name="description" content="Nạp thẻ giá rẻ an toàn - tiết kiệm - tiện lợi nhanh chóng với chiết khấu cao nhất, được hưởng nhiều ưu đãi nhất"/>
+    <!-- CSS  -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link href="~/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/lib/croppie/croppie.min.css" rel="stylesheet" />
+    <link href="~/css/simplePagination.min.css" rel="stylesheet" />
+    <link href="~/lib/materialize/css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <link href="~/css/site.css" type="text/css" rel="stylesheet" media="screen,projection" />
+
+</head>
+<body>
+    <nav class="white" role="navigation">
+        @await Html.PartialAsync("_headerPartial")
+    </nav>
+    <div id="index-banner" class="parallax-container">
+        @await Component.InvokeAsync("Slide")
+
+    </div>
+    <nav aria-label="breadcrumb" id="breadcrumb">
+        <ol class="container">
+            <li class="breadcrumb-item "><a href="/" class="indigo-text text-darken-4">Trang chủ</a></li>
+            <li class="breadcrumb-item active " aria-current="page">@ViewData["Title"]</li>
+        </ol>
+    </nav>
+    <div class="content">
+        @RenderBody()
+
+    </div>
+
+    <footer class="page-footer teal">
+        @await Component.InvokeAsync("footer")
+    </footer>
+
+
+    @await Html.PartialAsync("loginPartial")
+    <!--  Scripts-->
+    <script src="~/js/jquery.min.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+    <script src="~/lib/materialize/js/materialize.min.js"></script>
+    <script src="~/lib/mustache.min.js"></script>
+    <script src="~/lib/bootbox.min.js"></script>
+    <script src="~/js/jquery.simplePagination.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+    <script src="~/lib/croppie/croppie.js"></script>
+    <script src="~/js/site.min.js"></script>
+    <script src="~/js/components/userAccountScripts.min.js"></script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

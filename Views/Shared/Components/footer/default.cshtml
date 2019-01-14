@@ -1,0 +1,33 @@
+﻿@model WebTheCao.Data.Models.Contact
+
+       <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <h5 class="white-text">Liên hệ trực tiếp</h5>
+                    <p class="grey-text text-lighten-4">Điện thoại: @Model.PhoneNumber</p>
+
+                </div>
+                <div class="col l3 s12">
+                    <h5 class="white-text">Mạng xã hội</h5>
+                    <ul>
+                        <li><a class="white-text" href="@Model.FacebookLink">Facebook: @Model.Facebook</a></li>
+                        <li><a class="white-text" href="@Model.ZaloLink">Zalo: @Model.Zalo</a></li>
+                    </ul>
+                </div>
+                <div class="col l3 s12">
+                    <h5 class="white-text">Danh mục</h5>
+                    <ul>
+                        <li><a class="white-text" href="/nop-the.html">Trang chủ</a></li>
+                        <li><a class="white-text" href="/khuyen-mai.html">Khuyến mãi</a></li>
+                        <li><a class="white-text" href="/bang-gia.html">Bảng giá</a></li>
+                        <li><a class="white-text" href="/lien-he.html">Liên hệ</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container">
+                &copy; 2018 <a class="brown-text text-lighten-3" href="http://nopthegiare.com">nopthegiare.com</a>
+                            <span>Code by <a href="https://www.facebook.com/LookAtMeWhatDoYouThink">Võ Văn Hùng</a></span>
+            </div>
+        </div>

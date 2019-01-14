@@ -1,0 +1,53 @@
+﻿@model IEnumerable<NopTheViewModels>
+@using WebTheCao.Areas.Admin.ViewModels
+
+<li class="dropdown messages-menu realtime">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+        <i class="fa fa-bell-o"></i>
+        @if (Model.Count() != 0)
+        {
+            <span class="label label-success">@Model.Count()</span>
+        }
+    </a>
+    <ul class="dropdown-menu">
+        <li class="header">Bạn có @Model.Count() yêu cầu nạp thẻ!</li>
+        <li>
+            <!-- inner menu: contains the actual data -->
+            <ul class="menu">
+                @foreach (var item in Model)
+                {
+                    <li>
+                        <!-- start message -->
+                        <a href="#" class="view_item" data-id="@item.id">
+                            <div>
+                                @if (item.avatar != null)
+                                {
+                                    <img src="@item.avatar" class="img-circle" alt="@item.userName">
+                                }
+                                else
+                                {
+                                    <span><strong>@item.userName </strong> yêu cầu nạp thẻ</span>
+                                }
+                            </div>
+                            <span>
+                                @item.loaithe
+                                @item.menhgia.ToString("#,###") -@item.soluong cái
+                            </span>
+                            <br />
+                            <small><i class="fa fa-clock-o"></i>@item.ngaynop</small>
+
+                        </a>
+                    </li>
+                }
+
+            </ul>
+        </li>
+        <li class="footer">
+            <a href="#" class="make_is_read">Xem tất cả</a>
+        </li>
+    </ul>
+</li>
+
+
+
+}

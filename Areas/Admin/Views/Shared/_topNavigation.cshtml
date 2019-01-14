@@ -1,0 +1,82 @@
+﻿@addTagHelper *,WebTheCao
+@addTagHelper *,Microsoft.AspNetCore.Mvc.TagHelpers
+<header class="main-header">
+    <!-- Logo -->
+    <a href="/" class="logo">
+        <!-- mini logo for sidebar mini 50x50 pixels -->
+        @*<span class="logo-mini"><b>A</b>LT</span>*@
+        <!-- logo for regular state and mobile devices -->
+        <span class="logo-lg"><b>NopTheGiaRe</b></span>
+    </a>
+    <!-- Header Navbar: style can be found in header.less -->
+    <nav class="navbar navbar-static-top">
+        <!-- Sidebar toggle button-->
+        <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+            <span class="sr-only">Toggle navigation</span>
+       
+        </a>
+        <div class="navbar-custom-menu">
+            <ul class="nav navbar-nav">
+                <li><a href="#" class="UploadModal"><span class="fa fa-file-image-o"></span></a></li>
+                <!-- Messages: style can be found in dropdown.less-->
+                @await Component.InvokeAsync("Feedbacks")
+                <!-- Notifications: style can be found in dropdown.less -->
+                @await Component.InvokeAsync("NotificationViewComponent")
+                
+                <!-- Tasks: style can be found in dropdown.less -->
+                @await Component.InvokeAsync("UserRegister")
+                <!-- User Account: style can be found in dropdown.less -->
+
+                <li class="dropdown tasks-menu">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <img username="@User.Identity.Name" src="" class="user-image" alt="@User.Identity.Name" />
+                            <span class="hidden-xs">@User.Identity.Name</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <!-- User image -->
+                            <li class="user-header">
+                                <img username="@User.Identity.Name" src="" class="img-circle" alt="@User.Identity.Name" />
+                                <p>
+                                    @User.Identity.Name - 'Lập trình web'
+                                    <small>-code any thing-</small>
+                                </p>
+                            </li>
+                            <!-- Menu Body -->
+                            <li class="user-body">
+                                <div class="row">
+                                    <div class="col-xs-4 text-center">
+                                        <a href="">Followers</a>
+                                    </div>
+                                    <div class="col-xs-4 text-center">
+                                        <a href="#">Sales</a>
+                                    </div>
+                                    <div class="col-xs-4 text-center">
+                                        <a href="#">Friends</a>
+                                    </div>
+                                </div>
+                                <!-- /.row -->
+                            </li>
+                            <!-- Menu Footer-->
+                            <li class="user-footer">
+                                <div class="pull-left">
+                                    <a asp-action="Profile" asp-controller="Account" asp-area="Admin" class="btn btn-default btn-flat">Profile</a>
+                                </div>
+                                <div class="pull-right">
+                                    <a asp-action="Logout" asp-controller="Account" asp-area="Admin" class="btn btn-default btn-flat">Sign out</a>
+                                </div>
+                            </li>
+                        </ul>
+
+                    }
+
+                </li>
+                <!-- Control Sidebar Toggle Button -->
+                <li>
+                    <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>

@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewData["Title"] = "Tin khuyến mãi";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model IEnumerable<WebTheCao.Data.Models.Post>
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-md-8 card-area"  id="data-render">
+        </div>
+        <div class="col-md-4">
+            @await Component.InvokeAsync("topViews")
+
+        </div>
+       
+    </div>
+    <div class="pagination" id="pagination">
+    </div>
+</div>
+<script id="data-template" type="x-tmpl-mustache">
+    @await Html.PartialAsync("_postItemSummary")
+</script>
+@section scripts{ 
+<script src="~/js/components/postScript.min.js"></script>
+}

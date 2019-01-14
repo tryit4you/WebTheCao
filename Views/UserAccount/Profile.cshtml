@@ -1,0 +1,101 @@
+﻿@model ApplicationUser
+@{
+    ViewData["Title"] = "Trang cá nhân";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    CultureInfo c = CultureInfo.GetCultureInfo("vi-VN");
+}
+@using System.Globalization
+
+
+<div class="container">
+
+    <div id="thongtinTK" class="col s12">
+        <div class="frofile">
+            <div class="avatar-frofile">
+                <img class="materialboxed" width="200" src="@Model.UrlAvatar" alt="@Model.UserName">
+
+                <a class="upload-Icon" href="#"> <i class="material-icons">collections</i></a>
+                <input type="file" accept="png/*" name="Image" value="Chọn hình" class="btn btn-primary upload-avatar" />
+
+            </div>
+            <div class="crop-avatar hidden">
+                <div id="upload-demo">
+
+                </div>
+                <div class="footer center " style="margin-bottom:15px">
+                    <button class="btn btn-primary wave-effect " id="cancelCropBtn">Hủy</button>
+                    <button class="btn btn-default wave-effect " id="cropImageBtn">Cắt ảnh &amp; lưu lại</button>
+                </div>
+            </div>
+
+            <ul class="list-group list-group-flush">
+                <input type="hidden" name="userId" id="txtId" value="@Model.Id" />
+                <li class="list-group-item"><strong>Họ tên: </strong> <span>@(Model.DisplayName == null ? "___" : Model.DisplayName) </span> </li>
+                <li class="list-group-item"><strong>Tên tài khoản: </strong> <span>@Model.UserName </span> </li>
+                <li class="list-group-item"><strong> Số điện thoại: </strong><span>  @Model.Sdt</span></li>
+                <li class="list-group-item"><strong> Tài khoản chính: </strong><span>@{string tkc = Model.TaiKhoanChinh == 0 ? "0 " : Model.TaiKhoanChinh.ToString("#,###", c.NumberFormat);}@tkc </span><sup><u>đ</u></sup> </li>
+                <li class="list-group-item"><strong> Tài khoản Khuyến mãi: </strong><span>@{string tkkm = Model.TaiKhoanKhuyenMai == 0 ? "0 " : Model.TaiKhoanKhuyenMai.ToString("#,###", c.NumberFormat);}@tkkm</span><sup><u>đ</u></sup>  </li>
+                <li class="list-group-item"><strong> Điểm tích lũy: </strong> <span>@{string point = Model.Points == 0 ? "0 " : Model.Points.ToString("#,###", c.NumberFormat);}@point</span></li>
+            </ul>
+
+        </div>
+        <br />
+        <div class="footer center " style="margin-bottom:15px">
+            @if (User.IsInRole("Administrator"))
+            {
+                <a href="/admin/home/index">Đi đến quản trị<span class="material-icons" aria-hidden="true">developer_mode</span></a>
+            }
+            <a class="waves-effect waves-light btn modal-trigger" href="#editModal">Chỉnh sửa</a>
+        </div>
+    </div>
+
+
+
+</div>
+
+<div class="modal" id="editModal">
+    <div class="modal-content editModal">
+        <div class="editform">
+            <form id="frmEditAccount">
+                <div class="row">
+                    <input type="hidden" name="userId" id="txtId" value="@Model.Id" />
+
+                    <div class="input-field col s12">
+                        <input placeholder="Họ tên" id="displayName" name="Name" value="@Model.DisplayName" type="text" class="validate">
+                        <label for="displayName">Họ tên</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input placeholder="Số điện thoại" id="phoneNumber" name="Phone" value="@Model.PhoneNumber" type="text" class="validate">
+                        <label for="phoneNumber">Số điện thoại</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input placeholder="Địa chỉ" id="address" value="@Model.Address" type="text" class="validate">
+                        <label for="address">Địa chỉ</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input placeholder="Email" id="Email" value="@Model.Email" type="text" class="validate">
+                        <label for="address">Email</label>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Hủy</a>
+        <a href="#" class="btn waves-effect waves-green btn-flat btnUpdate">Cập nhật</a>
+    </div>
+</div>
+
+
+
+@section scripts{
+
+    <script src="~/js/components/userAccountScripts.min.js"></script>
+}

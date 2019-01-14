@@ -1,0 +1,47 @@
+﻿@using System.Globalization;
+@{
+    ViewData["Title"] = "Bảng giá";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{ 
+    var menhgiathe = (MenhGia_CardViewModels)ViewBag.data;
+    CultureInfo cul = CultureInfo.GetCultureInfo("vi-VN");
+}
+<div class="container">
+
+    <div class="row">
+        @foreach (var card in menhgiathe.Cards)
+        {
+            <div class="col-md-6 contact-area">
+                <div class="avatar card-avatar">
+                    <img src="@card.thumbNail" class="img-responsive" alt="@card.Name" />
+                </div>
+
+                <table class="highlight">
+                    <thead>
+                        <tr>
+                            <th>Mệnh giá</th>
+                            <th>Giá bán</th>
+                            <th>Điểm </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var menhgia in menhgiathe.DsMenhGia.Where(x=>x.cardId==card.Id).OrderBy(x=>x.Price))
+                        {
+                            <tr>
+                                <td>@menhgia.Price.ToString("#,###", cul.NumberFormat) <u><sup>đ</sup></u></td>
+                                <td>@menhgia.unit_Price.ToString("#,###", cul.NumberFormat) <u><sup>đ</sup></u></td>
+                                <td>@menhgia.Point.ToString("#,###", cul.NumberFormat)</td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+
+
+            </div>
+        }
+    </div>
+
+</div>
+

@@ -1,0 +1,122 @@
+﻿@model WebTheCao.Data.Models.ApplicationUser
+@{
+    ViewData["Title"] = "Lịch sử giao dịch";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    CultureInfo c = CultureInfo.GetCultureInfo("vi-VN");
+}
+@using System.Globalization
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12"><h4 class="header"> Thông tin giao dịch</h4> </div>
+        <hr />
+            <ul class="list-group list-group-flush " id="list-infor">
+                <input type="hidden" name="userId" id="txtId" value="@Model.Id" />
+                <li class="list-group-item">Tên tài khoản: @Model.UserName</li>
+                <li class="list-group-item">Số điện thoại: @Model.Sdt</li>
+                <li class="list-group-item">Tài khoản chính: @{string tkc = Model.TaiKhoanChinh == 0 ? "0 " : Model.TaiKhoanChinh.ToString("#,###", c.NumberFormat);}@tkc<sup><u>đ</u></sup></li>
+                <li class="list-group-item">Tài khoản Khuyến mãi: @{string tkkm = Model.TaiKhoanKhuyenMai == 0 ? "0 " : Model.TaiKhoanKhuyenMai.ToString("#,###", c.NumberFormat);}@tkkm<sup><u>đ</u></sup></li>
+                <li class="list-group-item">Điểm tích lũy: @{string point = Model.Points == 0 ? "0 " : Model.Points.ToString("#,###", c.NumberFormat);}@point</li>
+            </ul>
+            <br />
+
+
+            <a href="/giao-dich/nap-tien" class="btn btn-primary waves-effect light-blue" style="margin:auto">Nạp tiền</a>
+            <br />
+    </div>
+
+    <div class="row clearfix">
+        <ul class="nav nav-tabs col-md-12">
+            <li class="nav-item">
+                <a class="nav-link active" data-toggle="tab" href="#home">Thông tin giao dịch </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#lichsunap">Thông tin nạp thẻ</a>
+            </li>
+         
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div class="tab-pane active" id="home">
+                <div class="col-md-12">
+                    <h4 class="header">Danh sách các lần giao dịch gần đây nhất</h4>
+                </div>
+                    <table class="highlight">
+                        <thead>
+                            <tr>
+                                <th>Thời gian</th>
+                                <th>Số tiền</th>
+                                <th>Nội Dung</th>
+                                <th>Ghi chú</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="dataRender"></tbody>
+                    </table>
+     
+
+                <div class="pagination" id="pagination">
+                </div>
+            </div>
+            <div class="tab-pane fade" id="lichsunap">
+                <div class="col-md-12">
+                    <h4 class="header">Thông tin nạp thẻ tài khoản @Model.UserName </h4>
+                </div>
+                <div class="col-md-12">
+                    <table class="highlight history">
+                        <thead>
+                            <tr>
+                                <th>Thời gian</th>
+                                <th>Loại thẻ</th>
+                                <th>Số lượng </th>
+                                <th>Mệnh giá </th>
+                                <th>Giá chiết khấu </th>
+                                <th>Yêu cầu </th>
+                                <th >Trạng thái</th>
+                                <th>#</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="lichsuRender"></tbody>
+                    </table>
+                </div>
+
+                <div class="hispagination" id="hispagination">
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+</div>
+<script id="history-template" type="x-tmpl-mustache">
+    <tr class="row_item" data-id="{{Id}}">
+
+        <td>{{Time}}</td>
+        <td>{{CardName}}</td>
+        <td>{{Wanranty}}</td>
+        <td>{{Price}}</td>
+        <td>{{UnitPrice}}</td>
+        <td>{{Required}}</td>
+        <td>{{TrangThai}}</td>
+        <td>
+            <a href="#"  class="btn-cancel " data-id="{{Id}}"><i class="material-icons ">delete_forever</i> </a>
+        </td>  
+    </tr>
+</script>
+<script id="data-template" type="x-tmpl-mustache">
+    <tr class="row_item" data-id="{{Id}}">
+        <td>{{Time}}</td>
+        <td>{{SoTien}}</td>
+        <td>{{Content}}</td>
+        <td>{{Notes}}</td>
+    </tr>
+</script>
+
+@section scripts {
+    <script src="~/js/components/giaodichScript.min.js"></script>
+ 
+}
+    

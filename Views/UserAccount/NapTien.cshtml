@@ -1,0 +1,28 @@
+﻿@model IEnumerable<WebTheCao.Data.Models.TaiKhoanNganHang>
+@{
+    ViewData["Title"] = "Thông tin chuyển khoản";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+  
+}
+
+
+<div class="container">
+
+    <div class="row">
+        @foreach (var tk in Model)
+        {
+
+            <div class="col-md-6 group_tk">
+                <h4 class="header">Chuyển khoản qua @tk.TenNH</h4>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><strong> Số tài khoản: </strong> <span>  @tk.SoTK</span></li>
+                    <li class="list-group-item"><strong> Người thụ hưởng:</strong><span> @tk.NguoiThuHuong</span></li>
+                    <li class="list-group-item"><strong> Ngân hàng: </strong> <span>@tk.TenChiNhanh</span></li>
+                    <li class="list-group-item"><strong> Nội dung chuyển khoản:</strong><span>Nạp tiền vào tài khoản</span> @ViewBag.userName</li>
+                </ul>
+            </div>
+        } 
+    </div>
+    
+</div>  

@@ -1,0 +1,142 @@
+﻿@{
+    ViewBag.Title = "Quản trị thẻ cào";
+}
+
+
+@model WebTheCao.ViewModels.CardViewModels
+@addTagHelper *,Microsoft.AspNetCore.Mvc.TagHelpers
+
+<div class="alert alert-info align-center">
+    Quản trị thẻ cào
+</div>
+<div class="clearfix">
+    <div class="card ">
+        <div class="cart-in">
+
+
+            <ul class="nav nav-tabs tab-col-teal" role="tablist">
+                <li role="presentation" class="active">
+                    <a href="#home" data-toggle="tab">
+                        <i class="fa fa-table col-blue"></i> Thẻ cào
+                    </a>
+                </li>
+                <li role="presentation">
+                    <a href="#create" data-toggle="tab">
+                        <i class="fa fa-plus-circle col-green"></i> Tạo mới
+                    </a>
+                </li>
+                <li role="presentation">
+                    <a href="#Edit" data-toggle="tab">
+                        <i class="fa fa-edit col-orange"></i> Chỉnh sửa
+                    </a>
+                </li>
+
+            </ul>
+            <div class="body">
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane fade in active" id="home">
+                        <div class="show-Colapse">
+                            <div class="panel-group" id="accordion">
+                                @foreach (var item in Model.Cards)
+                                {
+                                    <div class="box box-widget collapsed-box ">
+                                        <div class="box-header with-border">
+                                            <div class="cardblock">
+                                                <span class="username">
+                                                    <img src="@item.thumbNail" data-widget="collapse" />
+                                                    <a href="#" data-widget="collapse">@item.Name</a>
+                                                    <a class="btnEditCard" data-id="@item.Id"><i class="fa fa-pencil blue"></i></a>
+                                                    @{string result = (item.Status ? "<a class='btn-active bg-green' data-id='" + item.Id + "'><i class='fa fa-check bg-'> Active</i></a>" : "<a class='btn-active bg-red' data-id='" + item.Id + "'><i class='fa fa-ban'>Not Active</i></a>");}
+                                                    @Html.Raw(result)
+                                                    <a class="btnDelete bg-red" data-id="@item.Id"><i class="fa fa-trash blue"></i></a>
+                                                </span>
+                                            </div>
+                                            <div class="box-tools">
+                                                <span class="uploadItems label label-primary">@Model.DaiLyThes.Count()</span>
+                                                <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                                    <i class="fa fa-plus"></i>
+                                                </button>
+                                                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                            </div>
+                                        </div>
+                                        <!-- /.box-header -->
+                                        <div class="box-body" style="">
+                                            <table class="table table-bordered table-striped">
+                                                <thead>
+                                                    <tr>
+
+                                                        <th>Mệnh giá thẻ</th>
+                                                        <th>Giá bán</th>
+                                                        <th>Điểm quy đổi</th>
+                                                        <td>Thao tác</td>
+                                                    </tr>
+                                                </thead>
+                                                @foreach (var daily in Model.DaiLyThes)
+                                                {
+
+                                                    <tr id="addNew">
+
+                                                        <td colspan="4" class="table-header">
+                                                            <h5>Tài khoản @daily.LoaiTaiKhoan (@daily.MenhGias.Where(x => x.cardId == item.Id).Count())</h5>
+                                                        </td>
+
+                                                    </tr>
+                                                    <tr id="addNew">
+                                                        <input type="hidden" name="MenhGia" value="" id="MenhGiaId-@item.Id-@daily.key" />
+                                                        <input type="hidden" name="LoaiThe" id="txtCardId-@item.Id-@daily.key" data-id="@item.Id" value="" />
+                                                        <td>
+                                                            <input type="text" class="format_number" name="Price" id="txtPrice-@item.Id-@daily.key" value="" />
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" class="format_number" name="Unit_Price" id="txtUnit_Price-@item.Id-@daily.key" value="" />
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" class="format_number" name="Points" id="txtPoints-@item.Id-@daily.key" value="" />
+                                                        </td>
+                                                        <td>
+                                                            <a href="# " class="badge bg-green-active btn-save-mg-@daily.key" data-id="@item.Id">
+                                                                <i class="fa fa-floppy-o "></i>Lưu lại
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+
+                                                    <tbody id="tbData">
+
+                                                        @foreach (var mg in daily.MenhGias.Where(x => x.cardId == item.Id))
+                                                        {
+                                                            @await Html.PartialAsync("_loadByCard", mg);
+                                                        }
+
+                                                    </tbody>
+                                                }
+
+                                            </table>
+                                        </div>
+                                    </div>
+                                }
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade in " id="create">
+                        @await Html.PartialAsync("CreatePartial")
+
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade in " id="Edit">
+                        @await Html.PartialAsync("_EditPartial")
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+@section jsFooter{
+    <script src="~/Admin/dist/js/controller/cardController.js"></script>
+
+}

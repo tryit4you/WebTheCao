@@ -1,0 +1,65 @@
+﻿@using WebTheCao.Areas.Admin.ViewModels
+@model HomeViewModels
+
+<div class="col-lg-3 col-xs-6">
+    <!-- small box -->
+    <div class="small-box bg-aqua">
+        <div class="inner">
+            <h3>@Model.NopTheVM.InToday</h3>
+            <p>Nạp thẻ hôm nay</p>
+            <h5>Tất cả @Model.NopTheVM.Total</h5>
+
+        </div>
+        <div class="icon">
+            <i class="fa fa-credit-card-alt " ></i>
+        </div>
+        <a href="/admin/card/history" class="small-box-footer">xem tất cả <i class="fa fa-arrow-circle-right"></i></a>
+    </div>
+</div>
+<div class="col-lg-3 col-xs-6">
+    <!-- small box -->
+    <div class="small-box bg-red">
+        <div class="inner">
+            <h3>@Model.GiaoDichVM.InToday</h3>
+            <p>Giao dịch hôm nay</p>
+            <p> Tất cả @Model.GiaoDichVM.Total</p>
+        </div>
+        <div class="icon">
+            <i class="fa fa-money"></i>
+        </div>
+        <a href="/admin/giaodich/index" class="small-box-footer">Xem thêm <i class="fa fa-arrow-circle-right"></i></a>
+    </div>
+</div>
+<!-- ./col -->
+<div class="col-lg-3 col-xs-6">
+    <!-- small box -->
+    <div class="small-box bg-green">
+        <div class="inner">
+            <h3>@Model.AccountVm.RegisterToday</h3>
+            <p>Đăng ký hôm nay</p>
+            <h5>Tất cả @Model.AccountVm.Total</h5>
+        </div>
+        <div class="icon">
+            <i class="fa fa-user-plus"></i>
+        </div>
+        <a href="/admin/account/Index" class="small-box-footer">Quản lý tài khoản <i class="fa fa-arrow-circle-right"></i></a>
+    </div>
+</div>
+<!-- ./col -->
+<div class="col-lg-3 col-xs-6">
+    <!-- small box -->
+    <div class="small-box bg-yellow">
+        <div class="inner">
+            <h3>@Model.FeedbackVm.InToday</h3>
+            <p>Phản hồi</p>
+            <p>Tất cả @Model.FeedbackVm.Total</p>
+        </div>
+        <div class="icon">
+            <i class="fa fa-feed"></i>
+        </div>
+        <a href="/admin/feedback/index" class="small-box-footer">Xem phản hồi <i class="fa fa-arrow-circle-right"></i></a>
+    </div>
+</div>
+<!-- ./col -->
+
+<!-- ./col -->

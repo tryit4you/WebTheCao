@@ -1,0 +1,37 @@
+﻿@addTagHelper *,Microsoft.AspNetCore.Mvc.TagHelpers
+
+  <div class="nav-wrapper container">
+            <a id="logo-container" href="/" class="brand-logo"><img src="~/images/logo.png" alt="Nạp thẻ giá rẻ" /></a>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="/nap-the.html">Nạp thẻ</a></li>
+                <li><a href="/khuyen-mai.html">Khuyến mãi</a></li>
+                <li><a href="/bang-gia.html">Bảng giá</a></li>
+                <li><a href="/lien-he.html">Liên hệ</a></li>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    @await Component.InvokeAsync("header")
+                }
+                else
+                {
+                    <li><a href="#" data-toggle="modal" data-target="#login-modal">Đăng nhập/ Đăng ký</a></li>
+
+                }
+            </ul>
+
+            <ul id="nav-mobile" class="sidenav">
+                <li><a href="/nap-the.html">Nạp thẻ</a></li>
+                <li><a href="/khuyen-mai.html">Khuyến mãi</a></li>
+                <li><a href="/bang-gia.html">Bảng giá</a></li>
+                <li><a href="/lien-he.html">Liên hệ</a></li>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    @await Component.InvokeAsync("header")
+                }
+                else
+                {
+                    <li><a href="#" data-toggle="modal" data-target="#login-modal">Đăng nhập/ Đăng ký</a></li>
+
+                }
+            </ul>
+            <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        </div>

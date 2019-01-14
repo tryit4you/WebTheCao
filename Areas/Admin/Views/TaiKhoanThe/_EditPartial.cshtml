@@ -1,0 +1,45 @@
+﻿<div class="header">
+    <h3 id="Header">Chỉnh sửa thông tin tài khoản thẻ</h3>
+</div>
+
+<div class="body">
+    <form role="form" id="frmUpdate">
+        <input type="hidden" id="EditId">
+        <div class="form-group">
+            <div class="form-line">
+                <label for="Name">Tên ngân hàng</label>
+                <input type="text" class="form-control" name="EditName" id="EditName">
+            </div>
+        </div> <div class="form-group">
+            <div class="form-line">
+                <label for="Name">Số tài khoản</label>
+                <input type="text" class="form-control" name="EditSoTK" id="EditSoTK">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="form-line">
+                <label for="Name">Người thụ hưởng</label>
+                <input type="text" class="form-control" name="EditNguoiThuHuong" id="EditNguoiThuHuong">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="form-line">
+                <label for="Name">Tên chi nhánh</label>
+                <input type="text" class="form-control" name="EditTenChiNhanh" id="EditTenChiNhanh">
+            </div>
+        </div>
+     
+        <div class="form-group">
+            <div class="demo-switch-title">Trạng thái</div>
+            <div class="switch">
+                <label><input type="checkbox" name="Status" id="EditStatus"><span class="lever switch-col-lime"></span></label>
+            </div>
+        </div>
+    </form>
+    <br />
+    <div class="form-group">
+
+        <button type="button" class="btn btn-secondary waves-effect" id="btnCancle" data-dismiss="modal">Hủy</button>
+        <button type="button" class="btn btn-primary waves-effect" id="SaveEdit">Lưu thay đổi</button>
+    </div>
+</div>

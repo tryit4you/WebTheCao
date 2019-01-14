@@ -1,0 +1,43 @@
+﻿<div class="header">
+    <h3 id="roomHeader">Nạp tiền hoặc thu hồi tiền từ tài khoản</h3>
+</div>
+<div class="body">
+    <form role="form" id="frmAddNew">
+        <input type="hidden" id="txtId">
+        <div class="form-group">
+            <div class="form-line">
+                <label for="Category">Tên tài khoản</label>
+                <select id="txtAccountName" name="AccountName" aria-hidden="true" data-select2-id="1" tabindex="-1" class="js-example-templating">
+                    <option value="">Chọn tài khoản</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="form-line">
+                <label for="Content">Số tiền  </label>
+                <input type="text" class="form-control" name="price" id="txtPrice">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="form-line">
+                <label for="SoTien">Nội dung giao dịch</label>
+                <select id="txtNoiDung" name="Content" aria-hidden="true" class="js-example-templating">
+                    <option value="1">Nạp tiền vào tài khoản</option>
+                    <option value="0">Thu hồi tiền của tài khoản</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="form-line">
+                <label for="Content">Ghi chú </label>
+                <textarea type="text" class="form-control" name="Notes" id="txtNotes" rows="3"></textarea>
+            </div>
+        </div>
+
+    </form>
+    <div class="form-group">
+
+        <button type="button" class="btn btn-secondary waves-effect" id="btnCancle" data-dismiss="modal">Hủy</button>
+        <button type="button" class="btn btn-primary waves-effect" id="btnAdd">Thực hiện</button>
+    </div>
+</div>

@@ -1,0 +1,131 @@
+﻿@{
+    ViewBag.Title = "Quản lý nội dung footer";
+}
+
+@using WebTheCao.Data.Models
+
+
+<div class="alert alert-info align-center">
+    Nội dung footer
+</div>
+
+<div class="clearfix">
+    <div class="card ">
+        <div class="cart-in">
+
+
+            <ul class="nav nav-tabs tab-col-teal" role="tablist">
+                <li role="presentation" class="active">
+                    <a href="#home" data-toggle="tab">
+                        <i class="fa fa-table col-blue"></i> Nội dung
+                    </a>
+                </li>
+                <li role="presentation">
+                    <a href="#create" data-toggle="tab">
+                        <i class="fa fa-plus-circle col-green"></i> Tạo mới
+                    </a>
+                </li>
+                <li role="presentation">
+                    <a href="#Edit" data-toggle="tab">
+                        <i class="fa fa-edit col-orange"></i> Chỉnh sửa
+                    </a>
+                </li>
+
+
+            </ul>
+            <div class="body">
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane fade in active" id="home">
+
+                        <div class="form-content">
+                            <div class="form-group form-inline pull-left">
+                                <div class="form-line">
+                                    <input type="text" class="form-control" placeholder="Tìm kiếm..." name="Search" id="txtSearch">
+                                    <button class="btn bg-blue"><i class="fa fa-search"></i></button>  <button class="btn btn-danger" id="btn-Deletemulti"><i class="fa fa-trash"></i>Xóa</button>
+                                </div>
+                                <hr />
+                            </div>
+
+                        </div>
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th style="width:10%"><label><input type="checkbox" name="selectAll" value="" id="selectAll" />Tất cả</label></th>
+                                    <th>Tên </th>
+                                    <th>Trạng thái</th>
+                                    <td>Thao tác</td>
+                                </tr>
+                            </thead>
+                            <tbody id="tbData"></tbody>
+                        </table>
+                        <div class="col-sm-7">
+                            <div class="dataTables_paginate paging_simple_numbers" id="DataTables_Table_0_paginate">
+                                <div class="pagination" id="pagination">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade in " id="create">
+
+                        @await Html.PartialAsync("_CreatePartial")
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade in " id="Edit">
+                        @await Html.PartialAsync("_EditPartial")
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+<script id="data-template" type="x-tmpl-mustache">
+    <tr class="row_item" data-id="{{ID}}">
+        <td>
+            <input type="checkbox" id="select-{{ID}}" name="selectAll" data-id="{{ID}}" class="chk-col-red selectedItem" />
+            <label for="select-{{ID}}"></label>
+        </td>
+        <td>{{Name}}</td>
+        <td >{{{Status}}}</td>
+
+        <td>
+            <a class="col-green waves-effect btn-view" href="#" data-toggle="tool-tip" data-placement="top" data-original-title="Xóa hồ sơ" data-id="{{ID}}">
+                <i class="fa fa-globe"></i>Xem
+            </a>
+            <a class="col-pink waves-effect btn-delete" href="#" data-toggle="tool-tip" data-placement="top" data-original-title="Xóa hồ sơ" data-id="{{ID}}">
+                <i class="fa fa-trash"></i>Xóa
+            </a>
+            <a href="#Edit " data-toggle="tab" class="col-orange waves-effect btn-edit" data-id="{{ID}}">
+                <i class="fa fa-edit"></i>Sửa
+            </a>
+        </td>
+    </tr>
+</script>
+
+@section jsFooter{
+    <script src="~/Admin/dist/js/controller/pageController.min.js"></script>
+}
+
+
+<div class="modal fade" id="pageViewModel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">
+                    <span id="modal-title"></span>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </h5>
+            </div>
+            <div class="modal-body">
+                <div id="content">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+                    <button type="button" class="btn btn-primary btnBrowser">Chỉnh sửa</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

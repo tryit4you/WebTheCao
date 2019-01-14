@@ -1,0 +1,95 @@
+﻿
+@addTagHelper *,Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewBag.Title = "Trang chủ";
+}
+
+
+<div class="alert alert-info align-center">
+    Xin chào!! @User.Identity.Name
+</div>
+
+<div class="row">
+    @await Component.InvokeAsync("HomeStatistic")
+</div>
+<div class="clearfix">
+    <div class="card">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="box box-solid bg-teal-gradient">
+                    <div class="box-header">
+                        <i class="fa fa-th"></i>
+                        <h3 class="box-title">Thống kê nạp thẻ</h3>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn bg-teal btn-sm" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                            <button type="button" class="btn bg-teal btn-sm" data-widget="remove">
+                                <i class="fa fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="box-body border-radius-none">
+                        <canvas id="colChartCardCount" width="400" height="400"></canvas>
+                    </div>
+                </div>
+            </div>     
+            <div class="col-md-4">
+                <div class="box box-solid bg-teal-gradient">
+                    <div class="box-header">
+                        <i class="fa fa-th"></i>
+                        <h3 class="box-title">Trạng thái nạp thẻ hôm nay</h3>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn bg-teal btn-sm" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                            <button type="button" class="btn bg-teal btn-sm" data-widget="remove">
+                                <i class="fa fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="box-body border-radius-none">
+                        <canvas id="statusChartCardCount" width="400" height="400"></canvas>
+                    </div>
+                </div>
+            </div> 
+           
+        </div>
+    </div>
+
+</div>
+<div class="clearfix">
+    <div class="card">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box box-solid bg-aqua-gradient">
+                    <div class="box-header">
+                        <i class="fa fa-th"></i>
+                        <h3 class="box-title">Biểu đồ doanh số bán thẻ điện thoại theo ngày</h3>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn bg-teal btn-sm" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                            <button type="button" class="btn bg-teal btn-sm" data-widget="remove">
+                                <i class="fa fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="box-body border-radius-none">
+                        <canvas id="thunhapChartCard" width="400" height="130"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@if (User?.Identity?.IsAuthenticated ?? false)
+{
+    <a asp-controller="Account" asp-action="Logout"
+       class="btn btn-danger">Đăng xuất</a>
+}
+@section jsFooter{
+    
+    <script src="~/Admin/dist/js/controller/homechartController.min.js"></script>
+}

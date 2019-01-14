@@ -1,0 +1,23 @@
+﻿@model ApplicationUser
+
+@{ 
+    var id = Model.Id;
+    var user = Model.UserName;
+    var point = Model.Points;
+
+    CultureInfo c = CultureInfo.GetCultureInfo("vi-VN");
+}
+@using System.Globalization
+    <li style="max-height:60px">
+    <a href="/giao-dich/@id" class="points">
+                                            <span>@{string pointstr = point == 0 ? "0 " : point.ToString("#,###", c.NumberFormat); }@pointstr<sup><u>đ</u></sup></span> </a> </li>
+    <li class="profile">
+        <a href="/tai-khoan/@id">
+            <input type="hidden" id="userId" data-id="@id" />
+            <img class="rounded-circle" width="30" height="30" src="" username="@user" alt="@user" title="@user" />
+            <span class="username hidden">@user</span>
+        </a>
+    </li>
+    <li>
+        <a href="/logout/@id">Đăng xuất</a>
+    </li>

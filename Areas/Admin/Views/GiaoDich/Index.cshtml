@@ -1,0 +1,113 @@
+﻿@{
+    ViewBag.Title = "Quản trị giao dịch";
+}
+
+@addTagHelper *,Microsoft.AspNetCore.Mvc.TagHelpers
+
+<div class="alert alert-info align-center">
+    Quản trị giao dịch
+</div>
+<div class="clearfix">
+    <div class="card ">
+        <div class="cart-in">
+
+
+            <ul class="nav nav-tabs tab-col-teal" role="tablist">
+                <li role="presentation" class="active">
+                    <a href="#home" data-toggle="tab">
+                        <i class="fa fa-table col-blue"></i> Lịch sử giao dịch
+                    </a>
+                </li>
+                <li role="presentation">
+                    <a href="#create" data-toggle="tab">
+                        <i class="fa fa-plus-circle col-green"></i> Nạp tiền/Thu hồi tiền
+                    </a>
+                </li>
+            </ul>
+            <div class="body">
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane fade in active" id="home">
+
+                            <div class="col-md-12">
+                                <div class="form-group form-inline pull-left">
+                                    <div class="form-line">
+                                        <input type="text" class="form-control" placeholder="Tìm kiếm..." name="Search" id="txtSearch">
+                                        <button class="btn bg-blue"><i class="fa fa-search"></i></button>
+                                        <button class="btn btn-danger white btn-deleteAll"><i class="fa fa-trash"></i> Xóa </button>
+                                    </div>
+
+                                </div>
+                                <div class="form-group form-inline pull-right">
+                                    <div class="form-line">
+
+                                       
+                                    </div>
+
+                            </div>
+                            
+                        </div>
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th style="width:10%"><label><input type="checkbox" name="selectAll" value="" id="selectAll" />Tất cả</label></th>
+                                    <th>Tên tài khoản</th>
+                                    <th>Số điện thoại</th>
+                                    <th>Nội dung</th>
+                                    <th>Ngày giao dịch</th>
+                                    <th>Tổng giao dịch</th>
+                                    <th>Ghi chú</th>
+                                    <th>###</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbData"></tbody>
+                        </table>
+
+                        <div class="col-sm-5">
+                            <div class="dataTables_info" id="DataTables_Table_0_info" role="status" aria-live="polite">
+                                <p>Trang <mark><span id="currentpage"></span></mark> tổng số <mark><span id="totalpage"></span></mark> trang</p>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-7">
+                            <div class="dataTables_paginate paging_simple_numbers" id="DataTables_Table_0_paginate">
+                                <div class="pagination" id="pagination">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade in " id="create">
+                        @await Html.PartialAsync("CreatePartial")
+
+                    </div>
+                 
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+<script id="data-template" type="x-tmpl-mustache">
+    <tr class="row_item" data-id="{{Id}}">
+        <td>
+            <input type="checkbox" id="select-{{Id}}" name="selectAll" data-id="{{Id}}" class="chk-col-red selectedItem" />
+            <label for="select-{{Id}}"></label>
+        </td>
+        <td>{{UserName}}</td>
+        <td>{{PhoneNumber}}</td>
+        <td>{{NoiDung}}</td>
+        <td>{{NgayGiaoDich}}</td>
+        <td>{{TongGiaoDich}}</td>
+        <td>{{GhiChu}}</td>
+        <td>
+            <a class="col-pink waves-effect btn-delete" href="#" data-toggle="tool-tip" data-placement="top" data-original-title="Xóa hồ sơ" data-id="{{Id}}">
+                <i class="fa fa-trash"></i>Xóa
+            </a>
+        </td>
+    </tr>
+</script>
+
+@section jsFooter{
+    <script src="~/Admin/dist/js/controller/giaodichController.min.js"></script>
+  
+}

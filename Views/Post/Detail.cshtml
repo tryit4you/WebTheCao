@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewData["Title"] = Model.Name;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model WebTheCao.ViewModels.PostViewModels
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-md-8 card-area">
+            <h3>@Model.Name</h3>
+            <div class="post-desc">
+                <span class="timeanduser"><i class="material-icons">access_time</i> @Model.TimePost <i class="material-icons">person_pin</i> post by @Model.UserName</span>
+            </div>
+            <div class="post-details">
+                @Html.Raw(Model.Content)
+            </div>
+            <div class="post-footer right">
+                @if (Model.Via != "")
+                {
+                    <i>Tham khảo bài viết tại</i>
+                    <a href="@Model.LinkVia">@Model.Via</a>
+                }
+            </div>
+            <div class="area-comment">
+                <h4>Comment://</h4>
+            </div>
+        </div>
+        <div class="col-md-4">
+         @await  Component.InvokeAsync("topViews")
+
+        </div>
+    </div>
+    <div class="pagination" id="pagination">
+    </div>
+</div>

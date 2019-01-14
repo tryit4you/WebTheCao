@@ -1,0 +1,106 @@
+﻿@{
+    ViewBag.Title = "Phản hồi từ người dùng";
+}
+
+@addTagHelper *,Microsoft.AspNetCore.Mvc.TagHelpers
+
+
+
+<div class="alert alert-info align-center">
+    Phản hồi của bạn đọc
+</div>
+<div class="clearfix">
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+
+            @await Html.PartialAsync("mailNavigation")
+            <!-- /.col -->
+            <div class="col-md-9">
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Hộp thư</h3>
+                        <div class="box-tools pull-right">
+                            <div class="has-feedback">
+                                <input type="text" class="form-control input-sm" id="txtSearch" placeholder="Search Mail">
+                                <span class="glyphicon glyphicon-search form-control-feedback btn-search"></span>
+                            </div>
+                        </div>
+                        <!-- /.box-tools -->
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body no-padding">
+                        <div class="mailbox-controls">
+                            <!-- Check all button -->
+                            <input type="checkbox" class="btn btn-default btn-sm" id="selectAll"/>
+  
+                            <div class="btn-group" style="margin-left: 20px;">
+                                <button type="button" class="btn btn-default btn-sm" id="btn-Deletemulti"><i class="fa fa-trash-o"></i></button>
+                            </div>
+
+                        </div>
+                        <div class="table-responsive mailbox-messages">
+                            <input type="hidden" id="txtOpt" value="@ViewBag.opt" />
+                            <table class="table table-hover table-striped">
+
+                                <tbody id="tbData"></tbody>
+                            </table>
+                            <!-- /.table -->
+                        </div>
+                        <!-- /.mail-box-messages -->
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer no-padding">
+                        <div class="mailbox-controls">
+                            <div class="row">
+
+                                <div class="col-sm-5">
+                                    <div class="dataTables_info" id="DataTables_Table_0_info" role="status" aria-live="polite">
+                                        <p>Trang <mark><span id="currentpage"></span></mark>/<mark><span id="totalpage"></span></mark></p>
+                                    </div>
+                                </div>
+                                <div class="col-sm-7">
+                                    <div class="dataTables_paginate paging_simple_numbers" id="DataTables_Table_0_paginate">
+                                        <div class="pagination" id="pagination">
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                     
+                        <!-- /.btn-group -->
+                    </div>
+                    <!-- /.pull-right -->
+                </div>
+            </div>
+        </div>
+        <!-- /. box -->
+        <!-- /.col -->
+        <!-- /.row -->
+    </section>
+
+</div>
+<script id="data-template" type="x-tmpl-mustache">
+    <tr class="row_item" data-id="{{ID}}">
+        <td>
+            <input type="checkbox" id="select-{{ID}}" name="selectAll" data-id="{{ID}}" class="chk-col-red selectedItem" />
+            <label for="select-{{ID}}"></label>
+        </td>
+        <td class="mailbox-star"><a href="#"><i class="fa fa-star text-yellow"></i></a></td>
+        <td class="mailbox-name">
+        <a href="compose?id={{ID}}">
+            <img src="{{urlAvatar}}" class="img-circle" style="width:50px;display:inline-block" alt="{{UserName}}" title="{{UserName}}" />
+            </a>
+        </td>
+        <td class="mailbox-subject">
+            <a href="compose?id={{ID}}"><b>{{Subject}}</b> </a> - {{Message}} {{{status}}}{{{isWaiting}}}
+        </td>
+        <td class="mailbox-attachment"></td>
+        <td class="mailbox-date"><small>{{CreateDate}}</small></td>
+    </tr>
+
+</script>
+@section jsFooter{
+    <script src="~/Admin/dist/js/controller/feedbackController.min.js"></script>
+}
